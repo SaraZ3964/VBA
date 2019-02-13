@@ -10,10 +10,6 @@ You are well on your way to becoming a programmer and Excel master! In this home
 
 * [Stock Data](Resources/Multiple_year_stock_data.xlsx) - Run your scripts on this data to generate the final homework report.
 
-### Stock market analyst
-
-![stock Market](Images/stockmarket.jpg)
-
 ### Easy
 
 * Create a script that will loop through each year of stock data and grab the total amount of volume each stock had over the year.
@@ -21,8 +17,6 @@ You are well on your way to becoming a programmer and Excel master! In this home
 * You will also need to display the ticker symbol to coincide with the total volume.
 
 * Your result should look as follows (note: all solution images are for 2015 data).
-
-![easy_solution](Images/easy_solution.png)
 
 ### Moderate
 
@@ -40,8 +34,6 @@ You are well on your way to becoming a programmer and Excel master! In this home
 
 * The result should look as follows.
 
-![moderate_solution](Images/moderate_solution.png)
-
 ### Hard
 
 * Your solution will include everything from the moderate challenge.
@@ -49,8 +41,6 @@ You are well on your way to becoming a programmer and Excel master! In this home
 * Your solution will also be able to locate the stock with the "Greatest % increase", "Greatest % Decrease" and "Greatest total volume".
 
 * Solution will look as follows.
-
-![hard_solution](Images/hard_solution.png)
 
 ### CHALLENGE
 
