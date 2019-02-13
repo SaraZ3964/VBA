@@ -1,104 +1,81 @@
-# VBA-Homework
-Sub Stock()
+# Unit 2 | Assignment - The VBA of Wall Street
 
-Dim ws As Worksheet
-For Each ws In Worksheets
-    ws.Activate  
+## Background
 
-Dim Ticker As String
-Dim Total As Double
-Total = 0
+You are well on your way to becoming a programmer and Excel master! In this homework assignment you will use VBA scripting to analyze real stock market data. Depending on your comfort level with VBA, choose your assignment from Easy, Moderate, or Hard below.
 
-Dim YearlyChange As Double
-YearlyChange = 0
-Dim PercentChange As Double
-Dim OP As Double
-Dim CP As Double
+### Files
 
-Dim j As Integer
-j = 2
+* [Test Data](Resources/alphabtical_testing.xlsx) - Use this while developing your scripts.
 
-last = ws.Cells(Rows.Count, 1).End(xlUp).Row
+* [Stock Data](Resources/Multiple_year_stock_data.xlsx) - Run your scripts on this data to generate the final homework report.
 
-ws.Range("I1").Value = "Ticker"
-ws.Range("J1").Value = "Total stock volumn"
-ws.Range("L1").Value = "Percent Change"
-ws.Range("K1").Value = "Yearly Change"
+### Stock market analyst
 
-For i = 2 To last
-   If Cells(i, 1).Value <> Cells(i + 1, 1) Then
-        Ticker = Cells(i, 1).Value
-        Total = Cells(i, 7).Value + Total
-    
-    OP = Cells(i, 3).Value
-    CP = Cells(i, 6).Value
-    
-    YearlyChange = CP - OP
-    
-    If (OP <> 0 And CP <> 0) Then
-      PercentChange = YearlyChange / OP
-       ws.Range("L" & j).Value = PercentChange
-    ws.Range("L" & j).NumberFormat = "0.00%"
-    ElseIf (OP = 0 And CP <> 0) Then
-            PercentChange = 1
-    Else:
-        PercentChange = 0
-    End If
-    
-    ws.Range("K" & j).Value = YearlyChange
-    ws.Range("I" & j).Value = Ticker
-    ws.Range("J" & j).Value = Total
-    j = j + 1
-    Total = 0
-    OP = Cells(i + 1, 3).Value
-    
-    Else:
-        Total = Cells(i, 7).Value + Total
-    
-End If
+![stock Market](Images/stockmarket.jpg)
 
-   If ws.Range("K" & j).Value > 0 Then
-        ws.Range("K" & j).Interior.ColorIndex = 4
-    
-    Else:
-        ws.Range("K" & j).Interior.ColorIndex = 3
-End If
+### Easy
 
-ws.Range("N2").Value = "Greatest%increase"
-ws.Range("N3").Value = "Greatest%Decrease"
-ws.Range("N4").Value = "Greatest total volume"
-ws.Range("O1").Value = "Ticker"
-ws.Range("P1").Value = "Value"
+* Create a script that will loop through each year of stock data and grab the total amount of volume each stock had over the year.
 
+* You will also need to display the ticker symbol to coincide with the total volume.
 
-Dim Maxpercent As Double
-Dim Minpercent As Double
-Dim Maxtotal As Double
+* Your result should look as follows (note: all solution images are for 2015 data).
 
+![easy_solution](Images/easy_solution.png)
 
-Maxpercent = Application.WorksheetFunction.Max(ws.Range("l:l"))
-Cells(2, 16).Value = Maxpercent
-Cells(2, 16).NumberFormat = "0.00%"
+### Moderate
 
-Minpercent = Application.WorksheetFunction.Min(ws.Range("l:l"))
-Cells(3, 16).Value = Minpercent
-Cells(3, 16).NumberFormat = "0.00%"
+* Create a script that will loop through all the stocks and take the following info.
 
-Maxtotal = Application.WorksheetFunction.Max(ws.Range("j:j"))
-Cells(4, 16).Value = Maxtotal
+  * Yearly change from what the stock opened the year at to what the closing price was.
 
+  * The percent change from the what it opened the year at to what it closed.
 
-If Cells(i, 12).Value = Maxpercent Then
-    Cells(2, 15).Value = Cells(i, 9).Value
+  * The total Volume of the stock
 
-ElseIf Cells(i, 12).Value = Minpercent Then
-               Cells(3, 15).Value = Cells(i, 9).Value
+  * Ticker symbol
 
-ElseIf Cells(i, 10).Value = Maxtotal Then
-               Cells(3, 15).Value = Cells(i, 9).Value
-End If
+* You should also have conditional formatting that will highlight positive change in green and negative change in red.
 
-Next i
-Next ws
+* The result should look as follows.
 
-End Sub
+![moderate_solution](Images/moderate_solution.png)
+
+### Hard
+
+* Your solution will include everything from the moderate challenge.
+
+* Your solution will also be able to locate the stock with the "Greatest % increase", "Greatest % Decrease" and "Greatest total volume".
+
+* Solution will look as follows.
+
+![hard_solution](Images/hard_solution.png)
+
+### CHALLENGE
+
+* Make the appropriate adjustments to your script that will allow it to run on every worksheet just by running it once.
+
+* This can be applied to any of the difficulties.
+
+### Other Considerations
+
+* Use the sheet `alphabetical_testing.xlsx` while developing your code. This dataset is smaller and will allow you to test faster. Your code should run on this file in less than 3-5 minutes.
+
+* Make sure that the script acts the same on each sheet. The joy of VBA is to take the tediousness out of repetitive task and run over and over again with a click of the button.
+
+## Submission
+
+* To submit please upload the following to Github:
+
+  * A screen shot for each year of your results on the Multi Year Stock Data.
+
+  * VBA Scripts as separate files.
+
+* After everything has been saved, create a sharable link and submit that to <https://bootcampspot-v2.com/>.
+
+- - -
+
+### Copyright
+
+Coding Boot Camp © 2018. All Rights Reserved.
